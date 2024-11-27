@@ -1,1 +1,1 @@
-#nginx alpine based repo
+#Hardened nginx

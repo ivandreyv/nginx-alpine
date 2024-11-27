@@ -1,12 +1,14 @@
 services:
   nginx:
-    image: ivandreyv/nginx-alpine:$TAG
+    image: ivandreyv/nginx-alpine-aarch64:3.20.3
     read_only: true
     container_name: nginx
     ports:
       - 80:80
       - 443:443
     tmpfs:
-      - /var/lib/nginx/tmp/
       - /run/nginx/
+      - /var/run/
+    volumes:
+      - ./logs:/var/log/nginx
 
