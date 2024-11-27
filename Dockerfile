@@ -31,6 +31,8 @@ RUN \
   cd /tmp/nginx-${NGINX_VERSION} && \
   sed -i 's/"Server: nginx"/"Server: web-server"/g' src/http/ngx_http_header_filter_module.c && \
   sed -i 's/"Server: " NGINX_VER CRLF;/"Server: web-server" CRLF;/g' src/http/ngx_http_header_filter_module.c && \ 
+  sed -i 's/#define NGINX_VER.*"nginx\/"/#define NGINX_VER          "web-server\/"/g' src/core/nginx.h && \
+  sed -i 's/#define NGINX_VERSION.*"1.27.2"/#define NGINX_VERSION      "none"/g' src/core/nginx.h && \
   ./configure \
     --prefix=/etc/nginx \
     --sbin-path=/usr/sbin/nginx \
